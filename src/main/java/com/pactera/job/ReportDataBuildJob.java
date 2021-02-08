@@ -83,7 +83,6 @@ public class ReportDataBuildJob implements Job {
                     reportHead2.add(composeTargetName);
                 }
             }
-            int ii = 1/0;
             firstHeadRow.add(new CellDefineDTO().setTitle("零售银行业务分析报表——贷款维度").setNum(this.totalColumns-2).setCol(1).setRow(1).setZhanRow(1).getCellMap());
             firstHeadRow.add(new CellDefineDTO().setTitle(new SimpleDateFormat("yyyy/MM/dd").format(new Date())).setRow(1).setNum(2).setCol(this.totalColumns-1).setZhanRow(1).getCellMap());
             secondHeadRow.add(new CellDefineDTO().setTitle("个人贷款业务分析表（表1）").setRow(2).setNum(this.totalColumns).setCol(1).setZhanRow(1).getCellMap());
