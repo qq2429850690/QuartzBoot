@@ -1,0 +1,58 @@
+quartz:
+  enabled: true
+server:
+  port: 9090
+spring:
+  application:
+    name: Spring-Quartz-Scheduler
+  datasource:
+    druid:
+      url: jdbc:mysql://10.114.10.28:13306/iomp?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&serverTimezone=UTC&useSSL=false
+      username: root
+      password: root#12345
+      driver-class-name: com.mysql.jdbc.Driver
+      # 初始化时建立物理连接的个数
+      initial-size: 20
+      # 最大连接池数量
+      max-active: 80
+      # 最小连接池数量
+      min-idle: 20
+      # 获取连接时最大等待时间
+      max-wait: 60000
+      # 是否缓存preparedStatement，也就是PSCache。
+      pool-prepared-statements: false
+      # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+      max-pool-prepared-statement-per-connection-size: -1
+      # 用来检测连接是否有效的sql，要求是一个查询语句，常用select 'x'。
+      validation-query: SELECT 'x'
+      # 单位：秒，检测连接是否有效的超时时间。
+      validation-query-timeout: 1
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-borrow: true
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-return: false
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      # 有两个含义：1) Destroy线程会检测连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接。2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
+      time-between-eviction-runs-millis: 6000
+      # 连接保持空闲而不被驱逐的最小时间
+      min-evictable-idle-time-millis: 1800000
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+      #使用非公平锁
+#      useUnfairLock: true
+#      removeAbandoned: true
+#      removeAbandonedTimeout: 1800
+#      logAbandoned: false
+#      validationQueryTimeout: 1
+#      keepAlive: true
+
+  #    jpa配置
+  jpa:
+    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+      # 取消小驼峰到下划线映射(加上这个)
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
